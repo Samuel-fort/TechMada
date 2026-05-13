@@ -4,10 +4,8 @@ namespace App\Controllers;
 
 class DashboardController extends BaseController
 {
-    // Redirection vers le bon dashboard selon le rôle
     public function index()
     {
-        // Vérifier si connecté
         if (!session()->get('isLoggedIn')) {
             return redirect()->to(route_to('auth.login'));
         }

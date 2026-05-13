@@ -19,7 +19,6 @@ class SoldeCongeModel extends Model
         'jours_pris'
     ];
 
-    // Récupérer les soldes d'un employé une année donnée
     public function getByEmployeAndYear($employe_id, $year)
     {
         return $this->select('soldes_conge.*, types_conge.nom as type_conge, types_conge.jours_max')
@@ -29,7 +28,6 @@ class SoldeCongeModel extends Model
                     ->findAll();
     }
 
-    // Récupérer un solde spécifique
     public function getSolde($employe_id, $type_conge_id, $year)
     {
         return $this->where('employe_id', $employe_id)
@@ -38,7 +36,6 @@ class SoldeCongeModel extends Model
                     ->first();
     }
 
-    // Vérifier si y'a assez de jours
     public function hasEnoughDays($employe_id, $type_conge_id, $days_needed, $year)
     {
         $solde = $this->getSolde($employe_id, $type_conge_id, $year);
@@ -51,7 +48,6 @@ class SoldeCongeModel extends Model
         return $jours_restants >= $days_needed;
     }
 
-    // Déduire les jours après approbation
     public function deduceDays($employe_id, $type_conge_id, $days, $year)
     {
         $solde = $this->getSolde($employe_id, $type_conge_id, $year);
@@ -67,7 +63,6 @@ class SoldeCongeModel extends Model
         ]);
     }
 
-    // Restaurer les jours (annulation ou refus)
     public function restoreDays($employe_id, $type_conge_id, $days, $year)
     {
         $solde = $this->getSolde($employe_id, $type_conge_id, $year);
@@ -83,17 +78,14 @@ class SoldeCongeModel extends Model
         ]);
     }
 
-    // Initialiser les soldes pour un employé (début d'année)
     public function initializeSoldes($employe_id, $year)
     {
         $db = \Config\Database::connect();
         
-        // Get all types de congé
         $typesResult = $db->query("SELECT id, jours_max FROM types_conge");
         $types = $typesResult->getResultArray();
         
         foreach ($types as $type) {
-            // Check if solde already exists
             $exist = $this->getSolde($employe_id, $type['id'], $year);
             
             if (!$exist) {

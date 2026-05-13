@@ -24,7 +24,6 @@ class EmployeModel extends Model
 
     protected $skipValidation = false;
 
-    // Récupérer un employé par email
     public function getByEmail($email)
     {
         return $this->where('email', $email)
@@ -32,7 +31,6 @@ class EmployeModel extends Model
                     ->first();
     }
 
-    // Récupérer tous les employés actifs
     public function getActive()
     {
         return $this->where('actif', 1)
@@ -40,7 +38,6 @@ class EmployeModel extends Model
                     ->findAll();
     }
 
-    // Récupérer un employé avec son département
     public function getWithDept($id)
     {
         return $this->select('employes.*, departements.nom as departement_nom')

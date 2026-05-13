@@ -25,7 +25,6 @@ class AdminController extends BaseController
         $this->demandeModel = new DemandeCongeModel();
     }
 
-    // Dashboard admin
     public function dashboard()
     {
         $year = date('Y');
@@ -49,13 +48,11 @@ class AdminController extends BaseController
         ]);
     }
 
-    // Lister les employés
     public function employes()
     {
         $employes = $this->employeModel->findAll();
         $departements = $this->departementModel->findAll();
 
-        // Enrichir avec les soldes
         $year = date('Y');
         foreach ($employes as &$emp) {
             $soldes = $this->soldeModel->getByEmployeAndYear($emp['id'], $year);
@@ -70,7 +67,6 @@ class AdminController extends BaseController
         ]);
     }
 
-    // Créer un employé
     public function storeEmploye()
     {
         $validation = \Config\Services::validation();
@@ -99,7 +95,6 @@ class AdminController extends BaseController
             'actif' => 1
         ]);
 
-        // Initialiser les soldes pour cette année
         $new_id = $this->employeModel->getInsertID();
         $this->soldeModel->initializeSoldes($new_id, date('Y'));
 
@@ -107,7 +102,6 @@ class AdminController extends BaseController
             ->with('message', 'Employé créé avec succès');
     }
 
-    // Éditer un employé
     public function editEmploye($id)
     {
         $employe = $this->employeModel->find($id);
@@ -125,7 +119,6 @@ class AdminController extends BaseController
         ]);
     }
 
-    // Mettre à jour un employé
     public function updateEmploye($id)
     {
         $employe = $this->employeModel->find($id);
@@ -158,7 +151,6 @@ class AdminController extends BaseController
             ->with('message', 'Employé mis à jour');
     }
 
-    // Gestion des départements
     public function departements()
     {
         $departements = $this->departementModel->findAll();
@@ -170,7 +162,6 @@ class AdminController extends BaseController
         ]);
     }
 
-    // Créer un département
     public function storeDepartement()
     {
         $validation = \Config\Services::validation();
@@ -191,7 +182,6 @@ class AdminController extends BaseController
         return redirect()->back()->with('message', 'Département créé');
     }
 
-    // Types de congé
     public function typesCong()
     {
         $types = $this->typeModel->findAll();
@@ -203,7 +193,6 @@ class AdminController extends BaseController
         ]);
     }
 
-    // Créer type de congé
     public function storeTypeConge()
     {
         $validation = \Config\Services::validation();
@@ -226,7 +215,6 @@ class AdminController extends BaseController
         return redirect()->back()->with('message', 'Type de congé créé');
     }
 
-    // Gestion des soldes
     public function soldes()
     {
         $year = date('Y');

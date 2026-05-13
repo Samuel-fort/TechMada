@@ -22,14 +22,11 @@ class RhController extends BaseController
         $this->departementModel = new DepartementModel();
     }
 
-    // Dashboard RH
     public function dashboard()
     {
-        // Demandes en attente
         $pending = $this->demandeModel->getPending();
         $nb_pending = count($pending);
 
-        // Demandes traitées ce mois
         $history = $this->demandeModel->getHistory(100);
         $this_month = array_filter($history, function($d) {
             return date('m-Y', strtotime($d['created_at'])) === date('m-Y');
@@ -49,13 +46,11 @@ class RhController extends BaseController
         ]);
     }
 
-    // Lister les demandes à traiter
     public function index()
     {
         $demandes = $this->demandeModel->getPending();
         $departements = $this->departementModel->findAll();
 
-        // Ajouter les jours disponibles pour chaque demande
         $demandes_with_soldes = [];
         foreach ($demandes as $demande) {
             $year = date('Y');
@@ -65,7 +60,6 @@ class RhController extends BaseController
                 $year
             );
 
-            // Calculer le nombre de jours
             $d1 = new \DateTime($demande['date_debut']);
             $d2 = new \DateTime($demande['date_fin']);
             $interval = $d1->diff($d2);
@@ -83,7 +77,6 @@ class RhController extends BaseController
         ]);
     }
 
-    // Approuver une demande
     public function approve()
     {
         if (!$this->request->isAJAX()) {
@@ -93,19 +86,16 @@ class RhController extends BaseController
         $id = $this->request->getPost('id');
         $user_id = session()->get('user_id');
 
-        // Récupérer la demande
         $demande = $this->demandeModel->find($id);
         if (!$demande || $demande['statut'] !== 'en_attente') {
             return $this->response->setJSON(['success' => false, 'message' => 'Demande invalide']);
         }
 
-        // Calculer le nombre de jours
         $d1 = new \DateTime($demande['date_debut']);
         $d2 = new \DateTime($demande['date_fin']);
         $interval = $d1->diff($d2);
         $jours_demandes = $interval->days + 1;
 
-        // Déduire du solde
         $year = date('Y');
         $this->soldeModel->deduceDays(
             $demande['employe_id'],
@@ -114,7 +104,6 @@ class RhController extends BaseController
             $year
         );
 
-        // Mettre à jour la demande
         $this->demandeModel->update($id, [
             'statut' => 'approuvee',
             'traite_par' => $user_id,
@@ -127,7 +116,6 @@ class RhController extends BaseController
         ]);
     }
 
-    // Refuser une demande
     public function refuse()
     {
         if (!$this->request->isAJAX()) {
@@ -138,13 +126,11 @@ class RhController extends BaseController
         $commentaire = $this->request->getPost('commentaire_rh') ?? '';
         $user_id = session()->get('user_id');
 
-        // Récupérer la demande
         $demande = $this->demandeModel->find($id);
         if (!$demande || $demande['statut'] !== 'en_attente') {
             return $this->response->setJSON(['success' => false, 'message' => 'Demande invalide']);
         }
 
-        // Mettre à jour la demande
         $this->demandeModel->update($id, [
             'statut' => 'refusee',
             'commentaire_rh' => $commentaire,
@@ -158,7 +144,6 @@ class RhController extends BaseController
         ]);
     }
 
-    // Historique
     public function history()
     {
         $demandes = $this->demandeModel->getHistory();
@@ -172,14 +157,12 @@ class RhController extends BaseController
         ]);
     }
 
-    // Gestion des soldes
     public function soldes()
     {
         $year = date('Y');
         $employes = $this->employeModel->getActive();
         $departements = $this->departementModel->findAll();
 
-        // Récupérer les soldes de chaque employé
         $employe_soldes = [];
         foreach ($employes as $emp) {
             $soldes = $this->soldeModel->getByEmployeAndYear($emp['id'], $year);

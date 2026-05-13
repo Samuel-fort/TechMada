@@ -13,7 +13,6 @@ class AuthController extends BaseController
         $this->employeModel = new EmployeModel();
     }
 
-    // Page de connexion
     public function login()
     {
         return view('auth/login', [
@@ -21,20 +20,15 @@ class AuthController extends BaseController
         ]);
     }
 
-    // Traiter le login
     public function authenticate()
     {
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 
-        // Chercher l'employé
         $employe = $this->employeModel->getByEmail($email);
 
         if ($employe && password_verify($password, $employe['mot_de_passe'])) {
-            // Récupérer les infos complètes
             $employe_complet = $this->employeModel->getWithDept($employe['id']);
-
-            // Connexion ok - stocker en session
             session()->set([
                 'isLoggedIn' => true,
                 'user_id' => $employe['id'],
@@ -47,20 +41,17 @@ class AuthController extends BaseController
             return redirect()->to(route_to('dashboard'))->with('message', 'Bienvenue ' . $employe['nom'] . '!');
         }
 
-        // Erreur
         return redirect()->back()
             ->with('error', 'Email ou mot de passe incorrect')
             ->withInput();
     }
 
-    // Logout
     public function logout()
     {
         session()->destroy();
         return redirect()->to(route_to('auth.login'))->with('message', 'Vous avez été déconnecté');
     }
 
-    // Page inscription (optionnel)
     public function register()
     {
         return view('auth/register', [
@@ -68,7 +59,6 @@ class AuthController extends BaseController
         ]);
     }
 
-    // Enregistrer un nouvel utilisateur
     public function storeUser()
     {
         $validation = \Config\Services::validation();
@@ -85,10 +75,8 @@ class AuthController extends BaseController
                 ->withInput();
         }
 
-        // Hasher le mot de passe
         $hashed_password = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
 
-        // Créer l'employé
         $this->employeModel->insert([
             'nom' => $this->request->getPost('nom'),
             'email' => $this->request->getPost('email'),

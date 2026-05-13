@@ -31,7 +31,6 @@ class DemandeCongeModel extends Model
         'statut' => 'in_list[en_attente,approuvee,refusee,annulee]'
     ];
 
-    // Récupérer les demandes d'un employé
     public function getByEmploye($employe_id)
     {
         return $this->select('demandes_conge.*, types_conge.nom as type_conge')
@@ -41,7 +40,6 @@ class DemandeCongeModel extends Model
                     ->findAll();
     }
 
-    // Récupérer les demandes en attente pour RH
     public function getPending()
     {
         return $this->select('demandes_conge.*, employes.nom as employe_nom, employes.departement_id,
@@ -54,7 +52,6 @@ class DemandeCongeModel extends Model
                     ->findAll();
     }
 
-    // Vérifier les chevauchements
     public function checkOverlap($employe_id, $date_debut, $date_fin, $exclude_id = null)
     {
         $query = $this->where('employe_id', $employe_id)
@@ -70,7 +67,6 @@ class DemandeCongeModel extends Model
         return $query->countAllResults() > 0;
     }
 
-    // Récupérer les demandes traitées
     public function getHistory($limit = 50)
     {
         return $this->select('demandes_conge.*, employes.nom as employe_nom, employes.departement_id,
