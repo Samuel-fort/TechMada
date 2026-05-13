@@ -263,6 +263,38 @@
   gap: 8px;
 }
 
+.topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 1px solid var(--border);
+  padding-left: 12px;
+}
+
+.topbar-user-name {
+  font-size: 0.9rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.topbar-logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  color: #dc3545;
+  text-decoration: none;
+  border: 1px solid #dc3545;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.topbar-logout-btn:hover {
+  background: #dc3545;
+  color: white;
+}
+
 /* Icônes d'action */
 .icon-btn {
   width: 34px;

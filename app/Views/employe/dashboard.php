@@ -179,11 +179,12 @@ function getDaysCount($debut, $fin) {
     $interval = $d1->diff($d2);
     return $interval->days + 1;
 }
+?>
 
-function confirmerAnnulation($id) {
+<script>
+function confirmerAnnulation(id) {
     if (confirm('Êtes-vous sûr de vouloir annuler cette demande?')) {
-        // Envoyer vers le formulaire d'annulation
-        window.location.href = '<?= route_to('employe.cancel', $id) ?>';
+        window.location.href = '<?= site_url('employe/cancel') ?>/' + id;
     }
 }
-?>
+</script>
