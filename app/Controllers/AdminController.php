@@ -151,6 +151,13 @@ class AdminController extends BaseController
             ->with('message', 'Employé mis à jour');
     }
 
+    public function disableEmploye($id)
+    {
+        $this->employeModel->update($id, ['actif' => 0]);
+        return redirect()->to(route_to('admin.employes'))
+            ->with('message', 'Employé désactivé');
+    }
+
     public function departements()
     {
         $departements = $this->departementModel->findAll();

@@ -49,6 +49,7 @@ $routes->group('admin', ['filter' => 'auth', 'namespace' => 'App\Controllers'], 
     $routes->post('employes', 'AdminController::storeEmploye', ['as' => 'admin.store_employe']);
     $routes->get('employes/(:id)', 'AdminController::editEmploye/$1', ['as' => 'admin.edit_employe']);
     $routes->post('employes/(:id)', 'AdminController::updateEmploye/$1', ['as' => 'admin.update_employe']);
+    $routes->delete('employes/(:id)', 'AdminController::disableEmploye/$1', ['as' => 'admin.disable_employe']);
     $routes->get('departements', 'AdminController::departements', ['as' => 'admin.departements']);
     $routes->post('departements', 'AdminController::storeDepartement', ['as' => 'admin.store_departement']);
     $routes->get('types-conge', 'AdminController::typesCong', ['as' => 'admin.types_conge']);

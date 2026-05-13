@@ -230,15 +230,4 @@ function ouvrirRefus(id) {
 }
 </script>
 
-<?php
-function getInitials($name) {
-    $words = explode(' ', trim($name));
-    $initials = '';
-    foreach ($words as $word) {
-        if (!empty($word)) $initials .= strtoupper($word[0]);
-    }
-    return substr($initials, 0, 2) ?: 'UN';
-}
-?>
-
 <?= $this->endSection() ?>

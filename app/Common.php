@@ -85,3 +85,20 @@ if (! function_exists('auth')) {
         };
     }
 }
+if (! function_exists('getInitials')) {
+    /**
+     * Get initials from a full name
+     *
+     * @param string $name
+     * @return string
+     */
+    function getInitials($name)
+    {
+        $words = explode(' ', trim($name));
+        $initials = '';
+        foreach ($words as $word) {
+            if (!empty($word)) $initials .= strtoupper($word[0]);
+        }
+        return substr($initials, 0, 2) ?: 'UN';
+    }
+}

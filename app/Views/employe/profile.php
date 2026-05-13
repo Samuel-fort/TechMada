@@ -38,9 +38,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><strong>Date d'embauche</strong></td>
+                            <td><strong>Département</strong></td>
                             <td>
-                                <?= $employe['date_embauche'] ? date_format(date_create($employe['date_embauche']), 'd/m/Y') : 'N/A' ?>
+                                <?= $employe['departement_nom'] ?? 'Non assigné' ?>
                             </td>
                         </tr>
                     </table>

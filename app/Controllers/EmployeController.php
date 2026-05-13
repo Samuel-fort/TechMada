@@ -40,11 +40,11 @@ class EmployeController extends BaseController
 
         $soldes_formatted = [];
         $jours_restants_total = 0;
-        
+
         foreach ($soldes as $solde) {
             $jours_restants = $solde['jours_total'] - $solde['jours_pris'];
             $jours_restants_total += $jours_restants;
-            
+
             $soldes_formatted[] = [
                 'type_conge' => $solde['type_conge'],
                 'jours_total' => $solde['jours_total'],
@@ -85,7 +85,7 @@ class EmployeController extends BaseController
     {
         $validation = \Config\Services::validation();
         $validation->setRules([
-            'type_conge_id' => 'required|integer',
+            'type_conge_id' => 'required|integer|greater_than[0]',
             'date_debut' => 'required|valid_date',
             'date_fin' => 'required|valid_date'
         ]);
@@ -101,9 +101,10 @@ class EmployeController extends BaseController
         $date_fin = $this->request->getPost('date_fin');
         $type_conge_id = $this->request->getPost('type_conge_id');
 
+        // Vérifier le chevauchement
         if ($this->demandeModel->checkOverlap($user_id, $date_debut, $date_fin)) {
             return redirect()->back()
-                ->with('error', 'Chevauchement détecté avec une autre demande')
+                ->with('error', 'Attention: Une autre demande existe déjà sur ces dates.')
                 ->withInput();
         }
 
@@ -112,13 +113,17 @@ class EmployeController extends BaseController
         $interval = $d1->diff($d2);
         $jours_demandes = $interval->days + 1;
 
+        // Vérifier le solde
         $year = date('Y');
         if (!$this->soldeModel->hasEnoughDays($user_id, $type_conge_id, $jours_demandes, $year)) {
+            $solde = $this->soldeModel->getSolde($user_id, $type_conge_id, $year);
+            $jours_disponibles = $solde ? ($solde['jours_total'] - $solde['jours_pris']) : 0;
             return redirect()->back()
-                ->with('error', 'Solde insuffisant pour cette demande')
+                ->with('error', "Solde insuffisant. Vous avez $jours_disponibles jour(s) disponible(s).")
                 ->withInput();
         }
 
+        // Créer la demande
         $this->demandeModel->insert([
             'employe_id' => $user_id,
             'type_conge_id' => $type_conge_id,
@@ -129,7 +134,7 @@ class EmployeController extends BaseController
         ]);
 
         return redirect()->to(route_to('employe.dashboard'))
-            ->with('message', 'Votre demande a bien été soumise. Elle est en attente de validation.');
+            ->with('message', '✓ Demande soumise avec succès. Elle est en attente de validation par le RH.');
     }
 
     public function index()
