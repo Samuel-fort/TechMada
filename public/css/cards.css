@@ -1,0 +1,200 @@
+/* ========================================
+   CARTES & MÉTRIQUES
+   ======================================== */
+
+/* Grille de métriques */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+/* Carte métrique simple */
+.metric {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+}
+
+.metric-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.metric-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+/* Icônes de couleur */
+.mi-green {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.mi-amber {
+  background: var(--warn-bg);
+  color: var(--warn);
+}
+
+.mi-red {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.mi-blue {
+  background: var(--info-bg);
+  color: var(--info);
+}
+
+.mi-forest {
+  background: var(--mint);
+  color: var(--forest);
+}
+
+.metric-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: 0.775rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.metric-sub {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.metric-sub.up {
+  color: var(--success);
+}
+
+.metric-sub.down {
+  color: var(--danger);
+}
+
+/* Carte de solde (congés) */
+.solde-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.solde-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.solde-type {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.solde-nums {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.solde-nums strong {
+  color: var(--ink);
+}
+
+/* Barre de progression solde */
+.solde-bar {
+  height: 6px;
+  background: var(--mint);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.solde-fill {
+  height: 100%;
+  background: var(--forest2);
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+.solde-fill.warn {
+  background: var(--warn);
+}
+
+.solde-fill.danger {
+  background: var(--danger);
+}
+
+.solde-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* Carte de données générale */
+.data-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.data-card-head {
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.data-card-head h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  margin: 0;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* État vide */
+.empty {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.empty i {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.75rem;
+  opacity: 0.3;
+}
+
+.empty p {
+  font-size: 0.875rem;
+  margin: 0;
+}

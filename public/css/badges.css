@@ -1,0 +1,127 @@
+/* ========================================
+   BADGES & STATUTS
+   ======================================== */
+
+/* Badge de statut */
+.statut {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 4px 9px;
+  border-radius: 12px;
+}
+
+.statut::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Statuts disponibles */
+.s-attente {
+  background: var(--warn-bg);
+  color: var(--warn);
+}
+
+.s-attente::before {
+  background: var(--warn);
+}
+
+.s-approuvee {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.s-approuvee::before {
+  background: var(--success);
+}
+
+.s-refusee {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.s-refusee::before {
+  background: var(--danger);
+}
+
+.s-annulee {
+  background: #f1efe8;
+  color: #7a8f80;
+}
+
+.s-annulee::before {
+  background: #b4b2a9;
+}
+
+/* Badge type de congé */
+.type-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* Types de congés */
+.t-annuel {
+  background: var(--mint);
+  color: var(--forest);
+}
+
+.t-maladie {
+  background: var(--info-bg);
+  color: var(--info);
+}
+
+.t-special {
+  background: #f0e8fb;
+  color: #5a2d82;
+}
+
+.t-sans-solde {
+  background: #f1efe8;
+  color: #7a8f80;
+}
+
+/* Messages flash */
+.flash {
+  padding: 11px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 1.25rem;
+  border: 1px solid transparent;
+}
+
+.flash-success {
+  background: var(--success-bg);
+  color: var(--success);
+  border-color: var(--success-br);
+}
+
+.flash-error {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-color: var(--danger-br);
+}
+
+.flash-warn {
+  background: var(--warn-bg);
+  color: var(--warn);
+  border-color: var(--warn-br);
+}
+
+.flash-info {
+  background: var(--info-bg);
+  color: var(--info);
+  border-color: var(--info-br);
+}

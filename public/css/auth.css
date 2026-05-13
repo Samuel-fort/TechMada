@@ -1,0 +1,137 @@
+/* ========================================
+   AUTHENTICATION - Pages de connexion
+   ======================================== */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--ink);
+}
+
+.auth-page.geo-bg::before {
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255, 255, 255, 0.03) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255, 255, 255, 0.03) 40px);
+}
+
+/* Panneau connexion */
+.auth-split {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--white);
+}
+
+/* Panneau gauche (brand) */
+.auth-left {
+  background: var(--forest);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.auth-left-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.auth-left-brand span {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 300;
+  font-family: 'DM Sans', sans-serif;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 4px;
+  letter-spacing: 0;
+}
+
+.auth-left-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.auth-left-text strong {
+  color: var(--white);
+  display: block;
+  font-size: 1.25rem;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 0.5rem;
+}
+
+/* Panneau droit (formulaire) */
+.auth-right {
+  padding: 2.5rem;
+}
+
+.auth-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+}
+
+.auth-sub {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0 0 1.75rem;
+}
+
+/* Demo credentials */
+.auth-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.role-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.role-pill i {
+  color: var(--leaf);
+  font-size: 1.1rem;
+}
+
+.role-pill-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.role-pill-cred {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: 'DM Mono', monospace;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.auth-footer a {
+  color: var(--forest);
+  text-decoration: none;
+  font-weight: 500;
+}

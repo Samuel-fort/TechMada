@@ -1,0 +1,109 @@
+/* ========================================
+   TABLEAUX
+   ======================================== */
+
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+/* En-tête du tableau */
+.tbl thead th {
+  padding: 9px 14px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* Lignes du tableau */
+.tbl tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
+
+.tbl tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tbl tbody tr:hover {
+  background: var(--cream);
+}
+
+/* Cellules */
+.tbl td {
+  padding: 12px 14px;
+  color: var(--ink);
+  vertical-align: middle;
+}
+
+.td-name {
+  font-weight: 500;
+}
+
+.td-muted {
+  color: var(--muted);
+}
+
+.td-mono {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+}
+
+/* Ligne profil dans tableau */
+.profile-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-row .avatar {
+  width: 44px;
+  height: 44px;
+  font-size: 0.8rem;
+}
+
+.profile-info .pname {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.profile-info .pdept {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* Actions dans tableau */
+.action-btns {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+/* Statistiques inline */
+.inline-stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.inline-stat {
+  font-size: 0.78rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.inline-stat strong {
+  color: var(--ink);
+  font-family: 'DM Mono', monospace;
+}

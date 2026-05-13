@@ -1,0 +1,123 @@
+/* ========================================
+   FORMULAIRES
+   ======================================== */
+
+.f-group {
+  margin-bottom: 1rem;
+}
+
+.f-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Inputs et selects */
+.f-input,
+.f-select,
+.f-textarea {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.875rem;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.f-input:focus,
+.f-select:focus,
+.f-textarea:focus {
+  border-color: var(--forest);
+  box-shadow: 0 0 0 3px rgba(45, 90, 61, 0.1);
+  outline: none;
+}
+
+.f-select {
+  cursor: pointer;
+}
+
+.f-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Messages d'erreur */
+.f-error {
+  font-size: 0.75rem;
+  color: var(--danger);
+  margin-top: 4px;
+}
+
+.f-hint {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* Formulaire disposé en grille */
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Section de formulaire */
+.form-section {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 1.25rem;
+  color: var(--ink);
+}
+
+/* Valeur calculée automatiquement */
+.f-computed {
+  background: var(--mint);
+  border: 1px solid #9fd4b8;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.f-computed-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--forest);
+  flex-shrink: 0;
+}
+
+.f-computed-label {
+  font-size: 0.8rem;
+  color: var(--forest);
+}
+
+/* Actions du formulaire */
+.form-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}

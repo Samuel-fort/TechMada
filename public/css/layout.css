@@ -1,0 +1,308 @@
+/* ========================================
+   LAYOUT - Structure principale
+   ======================================== */
+
+/* Motif géométrique de fond */
+.geo-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.geo-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(45, 90, 61, 0.04) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(45, 90, 61, 0.04) 40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.geo-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Conteneur app */
+.app-wrap {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: var(--sidebar-w);
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar-brand {
+  padding: 1.4rem 1.2rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-logo-icon {
+  width: 34px;
+  height: 34px;
+  background: var(--forest);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sidebar-logo-icon i {
+  color: var(--white);
+  font-size: 1.1rem;
+}
+
+.sidebar-brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.sidebar-brand-name span {
+  display: block;
+  font-size: 0.65rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Menu sections */
+.sidebar-section {
+  padding: 0.75rem 1.1rem 0.3rem;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 0.25rem;
+}
+
+/* Items du menu */
+.sidebar-nav {
+  list-style: none;
+  padding: 0 0.75rem;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 2px;
+}
+
+.sidebar-nav li a {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 11px;
+  border-radius: 7px;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 400;
+  transition: all 0.15s;
+}
+
+.sidebar-nav li a:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.sidebar-nav li a.active {
+  background: var(--forest);
+  color: var(--white);
+}
+
+.sidebar-nav li a i {
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+/* Badge de notification */
+.nav-badge {
+  margin-left: auto;
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+}
+
+.nav-badge.alert {
+  background: var(--danger);
+  color: var(--white);
+}
+
+/* Utilisateur sidebar */
+.sidebar-user {
+  padding: 0.85rem 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: auto;
+}
+
+.s-user-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 11px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.s-user-row:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--white);
+  flex-shrink: 0;
+  font-family: 'DM Mono', monospace;
+}
+
+.av-green {
+  background: var(--forest2);
+}
+
+.av-blue {
+  background: #1a4f7a;
+}
+
+.av-amber {
+  background: #b8750a;
+}
+
+.user-name {
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.user-role {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* MAIN CONTENT */
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOP BAR */
+.topbar {
+  height: var(--topbar-h);
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 1.75rem;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.topbar-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.topbar-breadcrumb {
+  font-size: 0.78rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.topbar-breadcrumb a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.topbar-breadcrumb a:hover {
+  color: var(--forest);
+}
+
+.topbar-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Icônes d'action */
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--muted);
+  transition: all 0.15s;
+  text-decoration: none;
+}
+
+.icon-btn:hover {
+  border-color: var(--forest);
+  color: var(--forest);
+}
+
+/* Contenu principal */
+.content {
+  padding: 1.75rem;
+  flex: 1;
+}
+
+/* FOOTER */
+.footer-app {
+  padding: 0.75rem 1.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-app span {
+  color: var(--forest);
+  font-weight: 500;
+}

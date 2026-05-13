@@ -1,0 +1,155 @@
+/* ========================================
+   BOUTONS
+   ======================================== */
+
+/* Bouton principal */
+.btn-primary {
+  background: var(--forest);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 11px 20px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: 'DM Sans', sans-serif;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background: var(--forest2);
+}
+
+/* Bouton secondaire */
+.btn-secondary {
+  background: var(--white);
+  color: var(--muted);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--muted);
+  color: var(--ink);
+}
+
+/* Bouton forest */
+.btn-forest {
+  background: var(--forest);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.btn-forest:hover {
+  background: var(--forest2);
+  color: var(--white);
+}
+
+/* Petits boutons (actions tableau) */
+.btn-sm {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Bouton approuver */
+.btn-approve {
+  background: var(--success-bg);
+  color: var(--success);
+  border-color: var(--success-br);
+}
+
+.btn-approve:hover {
+  background: #d5f0e3;
+}
+
+/* Bouton refuser */
+.btn-refuse {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-color: var(--danger-br);
+}
+
+.btn-refuse:hover {
+  background: #f8dbd8;
+}
+
+/* Bouton éditer */
+.btn-edit {
+  background: var(--info-bg);
+  color: var(--info);
+  border-color: var(--info-br);
+}
+
+.btn-edit:hover {
+  background: #d5e8f7;
+}
+
+/* Bouton supprimer */
+.btn-del {
+  background: var(--cream);
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+.btn-del:hover {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-color: var(--danger-br);
+}
+
+/* Bouton annuler */
+.btn-cancel {
+  background: var(--cream);
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+.btn-cancel:hover {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+/* Bouton voir */
+.btn-view {
+  background: var(--cream);
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+.btn-view:hover {
+  background: var(--mint);
+  color: var(--forest);
+  border-color: var(--forest);
+}

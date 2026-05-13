@@ -1,0 +1,58 @@
+/* ========================================
+   VARIABLES & COULEURS - TechMada RH
+   ======================================== */
+
+:root {
+  /* Palette principale */
+  --ink: #1c2b1e;              /* Texte principal, fond sombre */
+  --forest: #2d5a3d;           /* Primaire, boutons */
+  --forest2: #3d7a52;          /* Primaire hover */
+  --leaf: #5fa876;             /* Accent vert */
+  --mint: #d4ede0;             /* Fond clair */
+  --cream: #f8f6f1;            /* Fond page */
+  --white: #ffffff;            /* Blanc */
+  --border: #dde8e1;           /* Bordures */
+  --muted: #7a8f80;            /* Texte secondaire */
+
+  /* Statuts */
+  --danger: #c0392b;
+  --danger-bg: #fdf0ee;
+  --danger-br: #f0b8b2;
+
+  --warn: #b8750a;
+  --warn-bg: #fef9ee;
+  --warn-br: #f5d98a;
+
+  --success: #1e6b3f;
+  --success-bg: #edf7f2;
+  --success-br: #8fd4aa;
+
+  --info: #1a4f7a;
+  --info-bg: #eaf2fb;
+  --info-br: #8fbde8;
+
+  /* Layout */
+  --sidebar-w: 240px;
+  --topbar-h: 62px;
+}
+
+/* Police de base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  margin: 0;
+  font-size: 15px;
+}
+
+h1, h2, h3, .brand-name {
+  font-family: 'Playfair Display', serif;
+}
+
+code, pre, .mono {
+  font-family: 'DM Mono', monospace;
+}
