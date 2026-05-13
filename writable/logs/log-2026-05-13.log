@@ -1,0 +1,53 @@
+ERROR - 2026-05-13 06:25:28 --> Error connecting to the database: mysqli_sql_exception: No such file or directory in /home/samuel/Documents/TechMada/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/samuel/Documents/TechMada/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/samuel/Documents/TechMada/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/samuel/Documents/TechMada/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/samuel/Documents/TechMada/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/samuel/Documents/TechMada/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/samuel/Documents/TechMada/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 /home/samuel/Documents/TechMada/app/Models/EmployeModel.php(32): CodeIgniter\BaseModel->first()
+#7 /home/samuel/Documents/TechMada/app/Controllers/AuthController.php(31): App\Models\EmployeModel->getByEmail()
+#8 /home/samuel/Documents/TechMada/system/CodeIgniter.php(951): App\Controllers\AuthController->authenticate()
+#9 /home/samuel/Documents/TechMada/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#10 /home/samuel/Documents/TechMada/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#11 /home/samuel/Documents/TechMada/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#12 /home/samuel/Documents/TechMada/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#13 /home/samuel/Documents/TechMada/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#14 /home/samuel/Documents/TechMada/system/rewrite.php(44): require_once('...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No such file or directory in /home/samuel/Documents/TechMada/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/samuel/Documents/TechMada/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/samuel/Documents/TechMada/system/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/samuel/Documents/TechMada/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#3 /home/samuel/Documents/TechMada/system/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+#4 /home/samuel/Documents/TechMada/system/BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 /home/samuel/Documents/TechMada/app/Models/EmployeModel.php(32): CodeIgniter\BaseModel->first()
+#6 /home/samuel/Documents/TechMada/app/Controllers/AuthController.php(31): App\Models\EmployeModel->getByEmail()
+#7 /home/samuel/Documents/TechMada/system/CodeIgniter.php(951): App\Controllers\AuthController->authenticate()
+#8 /home/samuel/Documents/TechMada/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/samuel/Documents/TechMada/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/samuel/Documents/TechMada/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/samuel/Documents/TechMada/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/samuel/Documents/TechMada/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/samuel/Documents/TechMada/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-05-13 06:25:28 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No such file or directory
+[Method: POST, Route: authenticate]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(295): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH/Models/EmployeModel.php(32): CodeIgniter\BaseModel->first()
+ 6 APPPATH/Controllers/AuthController.php(31): App\Models\EmployeModel->getByEmail()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\AuthController->authenticate()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/samuel/Documents/TechMada/public/index.php')
