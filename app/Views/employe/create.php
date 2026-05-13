@@ -5,7 +5,6 @@
 <!-- FORMULAIRE DE DEMANDE DE CONGÉ -->
 <div style="display: grid; grid-template-columns: 1fr 300px; gap: 1.5rem; align-items: start;" class="form-layout">
 
-    <!-- Formulaire principal -->
     <div>
         <div class="form-section">
             <h3>Détails de la demande</h3>
@@ -87,9 +86,7 @@
                     <label class="f-label">Motif (optionnel)</label>
                     <textarea name="motif" 
                               class="f-textarea" 
-                              placeholder="Précisez le motif de votre demande si nécessaire...">
-                        <?= old('motif') ?>
-                    </textarea>
+                              placeholder="Précisez le motif de votre demande si nécessaire..."><?= old('motif') ?></textarea>
                     <div class="f-hint">Le motif est visible par le responsable RH.</div>
                 </div>
 
@@ -106,7 +103,7 @@
         </div>
     </div>
 
-    <!-- Panneau latéral : informations -->
+    
     <div style="display: flex; flex-direction: column; gap: 1rem">
 
         <!-- Soldes actuels -->
@@ -114,7 +111,7 @@
             <div class="data-card-head">
                 <h3>
                     <i class="bi bi-piggy-bank" style="color: var(--forest); margin-right: 5px"></i>
-                    Vos soldes actués
+                    Vos soldes actuels
                 </h3>
             </div>
             <div style="padding: 0.75rem 1.1rem; display: flex; flex-direction: column; gap: 0.75rem">
@@ -169,25 +166,31 @@
 
 </div>
 
-<!-- Script pour calculer la durée -->
+
 <script>
 function calculerDuree() {
     const debut = document.querySelector('input[name="date_debut"]').value;
-    const fin = document.querySelector('input[name="date_fin"]').value;
-    
+    const fin   = document.querySelector('input[name="date_fin"]').value;
+
     if (debut && fin) {
-        const d1 = new Date(debut);
-        const d2 = new Date(fin);
-        const diff = Math.abs(d2 - d1);
-        const jours = Math.ceil(diff / (1000 * 60 * 60 * 24)) + 1;
-        
-        // Afficher la duree
+      
+        const d1 = new Date(debut + 'T00:00:00');
+        const d2 = new Date(fin   + 'T00:00:00');
+        const diff = d2 - d1;
+
+        if (diff < 0) {
+            // Date fin antérieure à date début : on masque la box
+            document.getElementById('duree-box').style.display = 'none';
+            return;
+        }
+
+        const jours = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
+
         document.getElementById('duree-nombre').textContent = jours;
-        document.getElementById('duree-periode').textContent = 
-            'du ' + d1.toLocaleDateString('fr-FR') + 
+        document.getElementById('duree-periode').textContent =
+            'du ' + d1.toLocaleDateString('fr-FR') +
             ' au ' + d2.toLocaleDateString('fr-FR');
-        
-        // Afficher la box
+
         document.getElementById('duree-box').style.display = 'flex';
     }
 }

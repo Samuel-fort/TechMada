@@ -1,6 +1,15 @@
 <?= $this->extend('layouts/app') ?>
 
 <?= $this->section('content') ?>
+
+<?php
+// Helper pour récupérer les paramètres GET dans les vues CI4
+$req = service('request');
+$filter_status     = $req->getGet('status')     ?? '';
+$filter_employe_id = $req->getGet('employe_id') ?? '';
+$filter_annee      = $req->getGet('annee')      ?? date('Y');
+?>
+
 <div class="container-fluid">
     <div class="row mb-4">
         <div class="col-12">
@@ -18,9 +27,9 @@
                             <label for="status" class="form-label">Statut</label>
                             <select id="status" name="status" class="form-select">
                                 <option value="">Tous</option>
-                                <option value="approuvee" <?= (get('status') === 'approuvee') ? 'selected' : '' ?>>Approuvées</option>
-                                <option value="refusee" <?= (get('status') === 'refusee') ? 'selected' : '' ?>>Refusées</option>
-                                <option value="annulee" <?= (get('status') === 'annulee') ? 'selected' : '' ?>>Annulées</option>
+                                <option value="approuvee" <?= ($filter_status === 'approuvee') ? 'selected' : '' ?>>Approuvées</option>
+                                <option value="refusee"   <?= ($filter_status === 'refusee')   ? 'selected' : '' ?>>Refusées</option>
+                                <option value="annulee"   <?= ($filter_status === 'annulee')   ? 'selected' : '' ?>>Annulées</option>
                             </select>
                         </div>
                         <div class="col-md-3">
@@ -29,7 +38,7 @@
                                 <option value="">Tous</option>
                                 <?php if (!empty($employes)): ?>
                                     <?php foreach ($employes as $e): ?>
-                                        <option value="<?= $e['id'] ?>" <?= (get('employe_id') == $e['id']) ? 'selected' : '' ?>>
+                                        <option value="<?= $e['id'] ?>" <?= ($filter_employe_id == $e['id']) ? 'selected' : '' ?>>
                                             <?= $e['nom'] ?>
                                         </option>
                                     <?php endforeach; ?>
@@ -38,7 +47,7 @@
                         </div>
                         <div class="col-md-3">
                             <label for="annee" class="form-label">Année</label>
-                            <input type="number" id="annee" name="annee" class="form-control" value="<?= get('annee') ?? date('Y') ?>">
+                            <input type="number" id="annee" name="annee" class="form-control" value="<?= $filter_annee ?>">
                         </div>
                         <div class="col-md-3 d-flex align-items-end">
                             <button type="submit" class="btn btn-primary w-100">Filtrer</button>
@@ -83,9 +92,9 @@
                                                 <?php
                                                 $statusClass = match($demande['statut']) {
                                                     'approuvee' => 'badge-success',
-                                                    'refusee' => 'badge-danger',
-                                                    'annulee' => 'badge-secondary',
-                                                    default => 'badge-warning'
+                                                    'refusee'   => 'badge-danger',
+                                                    'annulee'   => 'badge-secondary',
+                                                    default     => 'badge-warning'
                                                 };
                                                 ?>
                                                 <span class="badge <?= $statusClass ?>">
@@ -108,4 +117,5 @@
         </div>
     </div>
 </div>
+
 <?= $this->endSection() ?>
