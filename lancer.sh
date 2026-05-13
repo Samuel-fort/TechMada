@@ -58,4 +58,4 @@ echo -e "${YELLOW}Appuyer sur Ctrl+C pour arrêter le serveur${NC}"
 echo ""
 
 # Lancer le serveur
-php spark serve --port=$PORT
+php -c .php-server.ini spark serve --port=$PORT
